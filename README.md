@@ -6,5 +6,5 @@ The program evaluates mathematical expressions from left to right, without consi
 ## Why?
 To get a grade
 
-## Mainted by
+## Maintained by
 For a generous definition of maintained, [Tyson Cox](https://github.com/coxtyson)
