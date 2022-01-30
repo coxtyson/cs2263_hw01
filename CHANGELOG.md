@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2022-01-30
+### Addded
+- CLI features, see -h for usage
+- Apache Commons CLI library to parse CLI arguments
+
 ## [0.0.1] - 2022-01-30
 ### Added
 - Project documenation and changelog
