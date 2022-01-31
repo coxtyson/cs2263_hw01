@@ -6,6 +6,9 @@ package edu.isu.cs2263.hw01;
 
 import org.apache.commons.cli.*;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -15,6 +18,7 @@ public class App {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd;
         Scanner scanner;
+        List<OutputWriter> outputs = new ArrayList<OutputWriter>();
 
         options.addOption("h", "help", false, "print usage message");
         options.addOption("b", "batch", true, "batch file containing expressions to evaluate");
@@ -52,12 +56,28 @@ public class App {
         }
 
         if (cmd.hasOption("o")) {
-            System.out.println("Output value: " + cmd.getOptionValue("o"));
+            String path = cmd.getOptionValue("o");
+            System.out.println("Output value: " + path);
+            try {
+                outputs.add(new FileOutputWriter(path));
+            }
+            catch (Exception ex) {
+                System.out.println("Failed to open output file: " + path);
+            }
         }
 
+        outputs.add(new ConsoleWriter());
+
         while(scanner.hasNext()) {
-            String line = scanner.nextLine();
-            System.out.println("-> " + evaluateExpression(line));
+            String expression = scanner.nextLine();
+            String result = "-> " + evaluateExpression(expression);
+
+            for (OutputWriter writer : outputs) {
+                if (writer.shouldWriteExpression())
+                    writer.write(expression);
+
+                writer.write(result);
+            }
         }
     }
 
