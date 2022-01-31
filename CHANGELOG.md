@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2022-01-31
+### Added
+- Support for file output of the expressions and their evaluations
+- Sections in the readme about usage and building
+
+### Changed
+- Fixed gradle run command to run interactively
+
 ## [1.1.0] - 2022-01-30
 ### Added
 - Expression evaluation
